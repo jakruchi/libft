@@ -6,7 +6,7 @@
 /*   By: jakruchi <jakruchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:26:59 by jakruchi          #+#    #+#             */
-/*   Updated: 2024/10/01 20:27:53 by jakruchi         ###   ########.fr       */
+/*   Updated: 2024/10/03 20:05:25 by jakruchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <bsd/string.h>
 
 void print_memory(const void *buffer, size_t size) {
     const unsigned char *byte_buffer = (const unsigned char *)buffer;
@@ -53,7 +54,7 @@ int	main()
 	int	int_value_of_d = 100;
 	int	int_value_of_D = 68;
 
-	size_t size = 10;
+	size_t size = 20;
     char *buffer1 = (char *)malloc(size);
     char *buffer2 = (char *)malloc(size);
 	if (!buffer1 || !buffer2) {
@@ -281,15 +282,91 @@ int	main()
 	printf("==================ft_memset==================\n");
 	ft_memset(buffer2, 65000, 15);
     print_memory(buffer2, 20);
+	printf("\n");
 
 	printf("==================bzero==================\n");
 	bzero(buffer1, 7);
-    print_memory(buffer1, 20);
+    print_memory(buffer1, size);
 	printf("==================ft_bzero==================\n");
 	ft_bzero(buffer2, 7);
-    print_memory(buffer2, 20);
+    print_memory(buffer2, size);
 	free(buffer1);
     free(buffer2);
+	printf("\n");
+
+	size_t size2 = 20;
+    char *buffer3 = (char *)malloc(size2);
+    char *buffer4 = (char *)malloc(size2);
+	if (!buffer3 || !buffer4) {
+        perror("Failed to allocate memory");
+        return 1;
+    }
+	memset(buffer3, 55, 15);
+	printf("==================memcpy==================\n");
+	ft_bzero(buffer4, 20);
+	memcpy(buffer4, buffer3, 10);
+    print_memory(buffer4, 20);
+	printf("==================ft_memcpy==================\n");
+	ft_bzero(buffer4, 20);
+	ft_memcpy(buffer4, buffer3, 10);
+    print_memory(buffer4, size2);
+	free(buffer3);
+    free(buffer4);
+	printf("\n");
+	
+	size_t size3 = 20;
+    char *buffer5 = (char *)malloc(size3);
+    char *buffer6 = (char *)malloc(size3);
+	if (!buffer5 || !buffer6) {
+        perror("Failed to allocate memory");
+        return 1;
+    }
+	// void	*ptr1 = NULL;
+	// void	*ptr2 = NULL;
+	memset(buffer5, 55, 15);
+	printf("==================memmove==================\n");
+	ft_bzero(buffer6, 20);
+	memmove(buffer6, buffer5, 10);
+    print_memory(buffer6, size3);
+	printf("==================ft_memmove==================\n");
+	ft_bzero(buffer6, 20);
+	ft_memmove(buffer6, buffer5, 10);
+    print_memory(buffer6, size3);
+	free(buffer5);
+    free(buffer6);
+	printf("\n");
+
+	char *buffer7 = (char *)malloc(50);
+    char *buffer8 = (char *)malloc(50);
+	if (!buffer7 || !buffer8) {
+        perror("Failed to allocate memory");
+        return 1;
+    }
+	memset(buffer8, 55, 50);
+	buffer8[25] = '\0';
+
+	printf("%zu\n", strlcpy(buffer7, buffer8, 15));
+	printf("%s", buffer7);
+	free(buffer7);
+	free(buffer8);
+	
+	// const char	*src1 = "Hello World";
+	// const char	*src2 = "Hello World65sdf6a5sd7f 6s5df6as5d f6asd7sf6as";
+	// char *buffer7 = (char *)malloc(50);
+    // char *buffer8 = (char *)malloc(50);
+	// if (!buffer7 || !buffer8) {
+    //     perror("Failed to allocate memory");
+    //     return 1;
+    // }
+	// printf("==================strlcpy==================\n");
+	// printf(":       %zu\n", strlcpy(buffer7, src1, (size_t)5));
+	// printf(":       %zu\n", strlcpy(buffer7, src2, (size_t)5));
+	// printf("%s\n", buffer7);
+	// printf("%s\n", buffer8);
+	// printf("===============ft_strlcpy==================\n");
+	
+
+	// printf("\n");
 	
 	// c main.c -L. -lft -I.
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jakruchi <jakruchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:21:20 by jakruchi          #+#    #+#             */
-/*   Updated: 2024/10/01 18:41:11 by jakruchi         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:04:06 by jakruchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	ft_toupper(int c);
 int	ft_tolower(int c);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
 
 #endif
