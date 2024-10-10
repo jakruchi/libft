@@ -7,17 +7,11 @@
 
 int	main(void)
 {
+	unsigned int	nmemb = 4294967295;
+	int size = 100;
+	int result = nmemb + size;
 
-	char *buffer7 = (char *)malloc(50);
-    char *buffer8 = (char *)malloc(50);
-	if (!buffer7 || !buffer8) {
-        perror("Failed to allocate memory");
-        return 1;
-    }
-	memset(buffer8, 55, 50);
-	buffer8[5] = '\0';
+	printf("%d", result);
 
-	printf("%zu\n", strlcpy(buffer7, buffer8, 50));
-	printf("%s", buffer7);
 	return (0);
 }

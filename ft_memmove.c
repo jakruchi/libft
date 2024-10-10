@@ -6,7 +6,7 @@
 /*   By: jakruchi <jakruchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:51:49 by jakruchi          #+#    #+#             */
-/*   Updated: 2024/10/03 15:31:22 by jakruchi         ###   ########.fr       */
+/*   Updated: 2024/10/04 19:35:44 by jakruchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	d = (char *)dest;
 	s = (char *)src;
 	i = n - 1;
-	if (dest == NULL && src == NULL)
+	if (!d && !s)
 		return (NULL);
 	if (d < s)
 		ft_memcpy(dest, src, n);

@@ -6,36 +6,43 @@
 #    By: jakruchi <jakruchi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 17:57:58 by jakruchi          #+#    #+#              #
-#    Updated: 2024/10/03 14:03:29 by jakruchi         ###   ########.fr        #
+#    Updated: 2024/10/10 18:13:34 by jakruchi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = 		libft.a
 
-CC = cc
+CC = 		cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror
 
-SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
-		ft_isprint.c ft_strlen.c ft_toupper.c ft_tolower.c \
-		ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c\
+SRC =		ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
+			ft_isprint.c ft_strlen.c ft_toupper.c ft_tolower.c \
+			ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
+			ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c \
+			ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
+			ft_atoi.c ft_calloc.c ft_strdup.c ft_putchar_fd.c \
+			ft_putstr_fd.c ft_putendl_fd.c \
 
-OBJ = $(SRC:%c=%o)
+			
+OBJ = 		$(SRC:%c=%o)
 
-$(NAME): $(OBJ)	
-		ar -rcs $(NAME) $(OBJ)
+$(NAME): 	$(OBJ)	
+			ar -rcs $(NAME) $(OBJ)
 
 %.o: %.c
-		$(CC) $(CFLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME)
+all: 		$(NAME) main
 
+main:
+			$(CC) $(CFLAGS) main.c -L. -lft -lbsd -I.
 clean:
-		rm -f $(OBJ)
+			rm -f $(OBJ)
 
-fclean: clean
-		rm -f $(NAME)
+fclean: 	clean
+			rm -f $(NAME)
 
-re: fclean all
+re: 		fclean all
 
-.PHONY: all clean fclean re
+.PHONY: 	all clean fclean re

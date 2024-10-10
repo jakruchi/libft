@@ -6,7 +6,7 @@
 /*   By: jakruchi <jakruchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:33:44 by jakruchi          #+#    #+#             */
-/*   Updated: 2024/10/03 15:13:52 by jakruchi         ###   ########.fr       */
+/*   Updated: 2024/10/04 19:37:00 by jakruchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	s = (char *)src;
 	d = (char *)dest;
 	i = 0;
-	if (dest == NULL && src == NULL)
+	if (!d && !s)
 		return (NULL);
 	while (i < n)
 	{
